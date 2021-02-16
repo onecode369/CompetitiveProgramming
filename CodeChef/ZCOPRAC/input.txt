@@ -1,0 +1,5 @@
+2
+9 3
+X Y Z Z Y X X Y Z
+4 2
+Y X Y Z
