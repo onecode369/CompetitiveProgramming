@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 #include<bits/stdc++.h>
 #define DEBUG(x) cerr << #x << " = " << x << endl
 #define MOD 1000000007LL
 #define INF INT_MAX
 #define reset(arr,n,i) fill(arr, arr+n, i)
-=======
-#include <bits/stdc++.h>
-#define DEBUG(x) cerr << #x << " " << x << endl
->>>>>>> fd37171d99e35f1901d510f7a3d0acb31138c27d
 
 using namespace std;
 
