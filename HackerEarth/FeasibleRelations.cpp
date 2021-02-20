@@ -12,11 +12,7 @@ int main(){
 	freopen("output.txt","w",stdout);
 	#endif
 	ios::sync_with_stdio(0);
-<<<<<<< HEAD
 	cin.tie(0); cout.tie(0);
-=======
-	cin.tie(0);cout.tie(0);
->>>>>>> fd37171d99e35f1901d510f7a3d0acb31138c27d
 
 	int t,n,m,x,y;
 	string s;
@@ -24,7 +20,6 @@ int main(){
 
 	while(t--){
 		cin >> n >> m;
-<<<<<<< HEAD
 		vector<int> adjList[n];
 		vector<pair<int,int>> v;
 		string s;
@@ -67,21 +62,5 @@ int main(){
 		else		cout << "NO\n";
 	}
 
-=======
-		vector<pair<int,int>> edge;
-		vector<int> adjListEql[n],adjListNEql[n];
-		for(int i=0;i<m;i++){
-			cin >> x >> s >> y;
-			if(s == "="){
-				adjListEql[x-1].push_back(y-1);
-				adjListEql[y-1].push_back(x-1);
-			}else{
-				adjListNEql[x-1].push_back(y-1);
-				adjListNEql[y-1].push_back(x-1);
-			}
-		}
-	}
-	
->>>>>>> fd37171d99e35f1901d510f7a3d0acb31138c27d
 	return 0;
 }
