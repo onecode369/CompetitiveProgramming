@@ -7,18 +7,15 @@
 
 using namespace std;
 
-vector<int> coins,ready,value;
+vector<int> coins;
 
 unsigned int solve(int exchange){
-    if(exchange < 0)    return INF;
-    if(exchange == 0)   return 0;
-    if(ready[exchange]) return value[exchange];
+    if(exchange < 0)   return INF;
+    if(exchange == 0)  return 0;
     unsigned int best = INF;
     for(auto c : coins){
         best = min(best,1+solve(exchange-c));
     }
-    ready[exchange] = 1;
-    value[exchange] = best;
     return best;
 }
 
@@ -38,10 +35,6 @@ int main(){
     }
     int exchange;
     cin >> exchange;
-    for(int i=0;i<=exchange;i++){
-        ready.emplace_back(0);
-        value.emplace_back(0);
-    }
     cout << solve(exchange) << endl;
 
     return 0;
