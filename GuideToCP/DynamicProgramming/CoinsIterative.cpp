@@ -7,18 +7,6 @@
 
 using namespace std;
 
-vector<int> coins;
-
-unsigned int solve(int exchange){
-    if(exchange < 0)   return INF;
-    if(exchange == 0)  return 0;
-    unsigned int best = INF;
-    for(auto c : coins){
-        best = min(best,1+solve(exchange-c));
-    }
-    return best;
-}
-
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
@@ -29,13 +17,24 @@ int main(){
 
     int numberOfCoins,c;
     cin >> numberOfCoins;
+    vector<int> coins;
     for(int i=0;i<numberOfCoins;i++){
         cin >> c;
         coins.emplace_back(c);
     }
     int exchange;
     cin >> exchange;
-    cout << solve(exchange) << endl;
+    int value[exchange+1];
+    value[0] = 0;
+    for(int i=1;i<=exchange;i++){
+        value[i] = INF;
+        for(int c : coins){
+            if(i-c >= 0){
+                value[i] = min(value[i],value[i-c]+1);
+            }
+        }
+    }
+    cout << value[exchange] << endl;
 
     return 0;
 }
