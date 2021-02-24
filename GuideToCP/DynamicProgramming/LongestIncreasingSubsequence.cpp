@@ -20,17 +20,25 @@ int main(){
     int arr[n];
     for(int i=0;i<n;i++)
         cin >> arr[i];
-    int dp[n];
-    reset(dp,n,1);
+    int tmp[n],trk[n];
+    vector<int> tmpValue;
+    reset(trk,n,-1);
+    tmp[0] = 0;
+    tmpValue.emplace_back(arr[0]);
+    vector<int>::iterator lwrbnd;
+    int idx;
     for(int i=1;i<n;i++){
-        for(int j = i-1;j>=0;j--)
-            if(arr[j] < arr[i])
-                dp[i] = max(dp[i],dp[j]+1);
+        lwrbnd = lower_bound(tmpValue.begin(),tmpValue.end(),arr[i]);
+        idx = lwrbnd - tmpValue.begin();
+        if(idx > 0)
+        trk[idx] = tmp[idx-1];
+        if((unsigned int)idx < (unsigned int)tmpValue.size())
+            tmpValue[idx] = arr[i];
+        else
+            tmpValue.emplace_back(arr[i]);
+        tmp[idx] = i;
     }
-    int ans = 1;
-    for(int i=0;i<n;i++)
-        ans = max(ans,dp[i]);
-    cout << ans << endl;
+    cout << tmpValue.size();
 
     return 0;
 }
