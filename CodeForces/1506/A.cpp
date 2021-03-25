@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+#define DEBUG(x) cerr << #x << " = " << x << endl
+#define MOD 1000000007LL
+#define INF INT_MAX
+#define reset(arr,n,i) fill(arr, arr+n, i)
+#define iseql(a,b) ((abs(a-b) - 1e-9 < 0) ? 1 : 0)
+
+using namespace std;
+
+int main(){
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+    ios::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    long long t,n,m,x;
+    cin >> t;
+    while(t--){
+        cin >> n >> m >> x;
+        if(x%n == 0)
+            cout << (((n-1)*m)+(x/n)) << endl;
+        else
+            cout << (long long) (ceil(x/(n*1.0))+((x%n)-1)*m) << endl;
+    }
+
+    return 0;
+}
