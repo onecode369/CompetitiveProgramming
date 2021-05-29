@@ -11,28 +11,27 @@ typedef long long ll;
 
 using namespace std;
 
-int n;
-int coins[105];
-
-int num_ways(int x){
-    if(x == 0)
-        return 1;
-    int ans = 0;
-    for(int i=0;i<n;i++){
-        if(x-coins[i] >= 0)
-            ans += num_ways(x-coins[i]);
-        else    break;
-    }
-    return ans;
-}
+vector<int> dp(1000005);
 
 void solve(){
-    int x;
+    int n,x;
     cin >> n >> x;
+    int coins[n];
     for(int i=0;i<n;i++)
         cin >> coins[i];
     sort(coins,coins+n);
-    cout << num_ways(x);
+    dp[0] = 1;
+    for(int i=1;i<=x;i++){
+        dp[i] = 0;
+        for(int j=0;j<n;j++){
+            if(i-coins[j] >= 0){
+                dp[i] += dp[i-coins[j]];
+            }
+            else    break;
+        }
+        dp[i]  %= MOD;
+    }
+    cout << dp[x];
 }
 
 signed main(){

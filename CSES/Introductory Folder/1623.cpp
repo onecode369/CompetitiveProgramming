@@ -11,18 +11,21 @@ typedef long long ll;
 
 using namespace std;
 
+int n;
+
+int div(int* arr, int i, int s1, int s2){
+	if(i == n)
+		return abs(s1-s2);
+	return min(div(arr, i+1, s1+arr[i], s2),
+				div(arr, i+1, s1, s2+arr[i]));
+}
+
 void solve(){
-    int n;
     cin >> n;
     int arr[n];
     for(int i=0;i<n;i++)
     	cin >> arr[i];
-    sort(arr,arr+n);
-    int i=0,j=n-1;
-    int sum1=0,sum2=0;
-    while(i < j){
-
-    }
+    cout << div(arr, 0, 0, 0);
 }
 
 signed main(){
